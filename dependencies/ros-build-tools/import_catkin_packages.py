@@ -478,6 +478,8 @@ def main():
                     help='Select the ROS distro to use.')
   parser.add_option('--list-packages', dest='list_packages', action='store_true',
                     default=False, help='Lists all available packages.')
+  parser.add_option('--update-packages', dest='update_packages', action='store_true',
+                    default=False, help='Updates all available packages.')
   parser.add_option('--output-directory', metavar='output_directory', default='.',
                     help='The output directory. Packages are put into <output-directory>/<name>')
   default_distro_url = 'https://raw.github.com/ros/rosdistro/master/%s/distribution.yaml'
@@ -511,7 +513,18 @@ def main():
     options.distro, url=options.distro_url % options.distro)
   if options.list_packages:
     list_packages(distro)
-    return
+  elif options.update_packages:
+    packages = os.listdir(os.path.abspath(options.output_directory))
+    exclude_dependencies = options.exclude_dependencies.split(',')
+    for package in packages:
+      if package in exclude_dependencies:
+        continue
+      generate_pkgbuild(distro, distro.package(package),
+                        os.path.abspath(options.output_directory),
+                        exclude_dependencies=options.exclude_dependencies.split(','),
+                        force=options.force, no_overwrite=options.no_overwrite,
+                        update=options.update, recursive=options.recursive,
+                        rosdep_urls=options.rosdep_urls)
   elif args:
     for package in args:
       generate_pkgbuild(distro, distro.package(package),

@@ -1,0 +1,20 @@
+branches:
+  only:
+    - auto-update
+language: python
+python:
+  - '2.7'
+install: pip install -r .travis.requirements.txt
+script: dependencies/ros-build-tools/import_catkin_packages.py --update-packages --exclude-dependencies=opencv2,ros2djs,roslibjs --output-directory=hydro --distro=hydro -u -f
+after_success:
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --local user.email "${GIT_EMAIL}"
+  - git config --local user.name "${GIT_NAME}"
+  - git checkout -b ${TRAVIS_BRANCH}_updated
+  - git add hydro
+  - git commit -m "Updated packages."
+  - git remote add authorigin https://username:${GH_TOKEN}@github.com/fwalch/arch-ros-stacks.git
+  - git push --force authorigin ${TRAVIS_BRANCH}_updated
+env:
+  global:
+    secure: "AdHPtqPnMbOcNWyTMOvq/tzzCLZPGcaSNX92cs41cRZMNGipjaFUuaKSYpKtbt34HiVutMbg90N3ZrlyWk54WaB/lNIjmdO3bINQhwa9+NvljiFaNRCav1TyBierf2mDr+WNNS0aiDlKP1tRdtmSqBtfpSbB9DmLGXqEeEZSouY="
