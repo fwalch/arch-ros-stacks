@@ -4,10 +4,18 @@ url='http://www.ros.org/'
 
 pkgname='ros-hydro-eigen-utils'
 pkgver='1.0.2'
+_pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('GPLv2')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-tf
+  ros-hydro-tf-conversions
+  ros-hydro-catkin
+  ros-hydro-roscpp)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]}
+  eigen3)
 
 ros_depends=(ros-hydro-tf
   ros-hydro-tf-conversions
@@ -15,7 +23,7 @@ ros_depends=(ros-hydro-tf
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/hydro/eigen_utils/${pkgver}-0
+_tag=release/hydro/eigen_utils/${pkgver}-${_pkgver_patch}
 _dir=eigen_utils
 source=("${_dir}"::"git+https://github.com/marioprats/eigen_utils-release.git"#tag=${_tag})
 md5sums=('SKIP')
@@ -29,9 +37,10 @@ build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python3 error
+  # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/${_dir}
 
+  # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \

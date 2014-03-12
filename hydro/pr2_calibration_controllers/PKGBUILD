@@ -3,12 +3,23 @@ pkgdesc="ROS - The pr2_calibration_controllers package contains the controllers 
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-pr2-calibration-controllers'
-pkgver='1.10.7'
+pkgver='1.10.8'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-realtime-tools
+  ros-hydro-roscpp
+  ros-hydro-pluginlib
+  ros-hydro-pr2-mechanism-controllers
+  ros-hydro-robot-mechanism-controllers
+  ros-hydro-catkin
+  ros-hydro-pr2-mechanism-model
+  ros-hydro-std-msgs
+  ros-hydro-pr2-controller-interface)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-hydro-realtime-tools
   ros-hydro-roscpp

@@ -3,7 +3,7 @@ pkgdesc="ROS - Provide a node that extracts checkerboard corners from ROS images
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-image-cb-detector'
-pkgver='0.10.7'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
@@ -16,11 +16,10 @@ ros_makedepends=(ros-hydro-message-generation
   ros-hydro-image-transport
   ros-hydro-roscpp
   ros-hydro-geometry-msgs
-  ros-hydro-opencv2
+  ros-hydro-catkin
   ros-hydro-actionlib
   ros-hydro-calibration-msgs
   ros-hydro-actionlib-msgs
-  ros-hydro-catkin
   ros-hydro-pcl-ros
   ros-hydro-std-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
@@ -33,7 +32,6 @@ ros_depends=(ros-hydro-message-filters
   ros-hydro-image-transport
   ros-hydro-roscpp
   ros-hydro-geometry-msgs
-  ros-hydro-opencv2
   ros-hydro-actionlib
   ros-hydro-calibration-msgs
   ros-hydro-actionlib-msgs

@@ -3,7 +3,7 @@ pkgdesc="ROS - Provides msgs, services and actions for STDR Simulator."
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-stdr-msgs'
-pkgver='0.1.1'
+pkgver='0.1.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1

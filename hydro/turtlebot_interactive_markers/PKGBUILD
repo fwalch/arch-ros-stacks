@@ -3,7 +3,7 @@ pkgdesc="ROS - Interactive control for the TurtleBot using RViz and interactive 
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-turtlebot-interactive-markers'
-pkgver='2.2.2'
+pkgver='2.2.3'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
@@ -16,7 +16,8 @@ ros_makedepends=(ros-hydro-roscpp
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-hydro-roscpp
+ros_depends=(ros-hydro-turtlebot-bringup
+  ros-hydro-roscpp
   ros-hydro-interactive-markers
   ros-hydro-visualization-msgs)
 depends=(${ros_depends[@]})

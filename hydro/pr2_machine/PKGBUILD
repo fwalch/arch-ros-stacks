@@ -1,14 +1,17 @@
 
-pkgdesc="ROS - This package contains the xxx.machine files that describe the different hosts a node can be spawned on."
+pkgdesc="ROS - This package contains the xxx."
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-pr2-machine'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-catkin)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]})

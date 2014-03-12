@@ -3,16 +3,22 @@ pkgdesc="ROS - Plays a pre-recorded motion on a robot."
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-play-motion'
-pkgver='0.3.2'
+pkgver='0.3.5'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-hydro-actionlib
+ros_makedepends=(ros-hydro-play-motion-msgs
+  ros-hydro-actionlib
+  ros-hydro-sensor-msgs
+  ros-hydro-joint-trajectory-controller
   ros-hydro-roscpp
+  ros-hydro-robot-state-publisher
   ros-hydro-catkin
   ros-hydro-controller-manager-msgs
+  ros-hydro-controller-manager
+  ros-hydro-joint-state-controller
   ros-hydro-control-msgs
   ros-hydro-rostest)
 makedepends=('cmake' 'git' 'ros-build-tools'
@@ -20,6 +26,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-hydro-roscpp
   ros-hydro-controller-manager-msgs
+  ros-hydro-play-motion-msgs
   ros-hydro-control-msgs
   ros-hydro-actionlib)
 depends=(${ros_depends[@]})

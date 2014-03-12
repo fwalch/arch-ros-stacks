@@ -3,12 +3,15 @@ pkgdesc="ROS - A simple script that aggregates all of the topics that a pr2_dash
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-pr2-dashboard-aggregator'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-catkin)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-hydro-rospy
   ros-hydro-pr2-msgs

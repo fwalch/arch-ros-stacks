@@ -3,12 +3,19 @@ pkgdesc="ROS - The joint_trajectory_action is a node that exposes an action inte
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-joint-trajectory-action'
-pkgver='1.10.7'
+pkgver='1.10.8'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-roscpp
+  ros-hydro-pr2-controllers-msgs
+  ros-hydro-catkin
+  ros-hydro-actionlib
+  ros-hydro-trajectory-msgs)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-hydro-roscpp
   ros-hydro-pr2-controllers-msgs

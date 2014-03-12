@@ -3,7 +3,7 @@ pkgdesc="ROS - This package defines messages for storing calibration samples to 
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-calibration-msgs'
-pkgver='0.10.7'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1

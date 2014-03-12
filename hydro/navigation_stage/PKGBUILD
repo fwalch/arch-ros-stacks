@@ -4,10 +4,20 @@ url='http://www.ros.org/'
 
 pkgname='ros-hydro-navigation-stage'
 pkgver='0.2.0'
+_pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-map-server
+  ros-hydro-fake-localization
+  ros-hydro-move-base
+  ros-hydro-gmapping
+  ros-hydro-stage-ros
+  ros-hydro-catkin
+  ros-hydro-amcl)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-hydro-map-server
   ros-hydro-fake-localization
@@ -17,7 +27,7 @@ ros_depends=(ros-hydro-map-server
   ros-hydro-amcl)
 depends=(${ros_depends[@]})
 
-_tag=release/hydro/navigation_stage/${pkgver}-0
+_tag=release/hydro/navigation_stage/${pkgver}-${_pkgver_patch}
 _dir=navigation_stage
 source=("${_dir}"::"git+https://github.com/ros-gbp/navigation_tutorials-release.git"#tag=${_tag})
 md5sums=('SKIP')
@@ -31,9 +41,10 @@ build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python3 error
+  # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/${_dir}
 
+  # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \

@@ -3,7 +3,7 @@ pkgdesc="ROS - A simple, flexible and scalable 2D multi-robot simulator."
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-stdr-simulator'
-pkgver='0.1.1'
+pkgver='0.1.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1

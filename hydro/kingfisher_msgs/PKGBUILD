@@ -3,8 +3,8 @@ pkgdesc="ROS - Provides standard messages specific to Kingfisher, especially for
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-kingfisher-msgs'
-pkgver='0.0.3'
-_pkgver_patch=0
+pkgver='0.0.4'
+_pkgver_patch=1
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')

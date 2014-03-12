@@ -3,12 +3,18 @@ pkgdesc="ROS - The single joint position action is a node that provides an actio
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-single-joint-position-action'
-pkgver='1.10.7'
+pkgver='1.10.8'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-roscpp
+  ros-hydro-pr2-controllers-msgs
+  ros-hydro-catkin
+  ros-hydro-actionlib)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-hydro-roscpp
   ros-hydro-pr2-controllers-msgs

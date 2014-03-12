@@ -3,7 +3,7 @@ pkgdesc="ROS - Drivers for the Asus Xtion and Primesense Devices."
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-openni2-camera'
-pkgver='0.1.1'
+pkgver='0.1.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
@@ -31,20 +31,13 @@ depends=(${ros_depends[@]}
 
 _tag=release/hydro/openni2_camera/${pkgver}-${_pkgver_patch}
 _dir=openni2_camera
-source=("${_dir}"::"git+https://github.com/ros-gbp/openni2_camera-release.git"#tag=${_tag}
-        cmake.patch)
-md5sums=('SKIP'
-         '439624edbc7235c4f0c9fa1bd2021603')
+source=("${_dir}"::"git+https://github.com/ros-gbp/openni2_camera-release.git"#tag=${_tag})
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/hydro/setup.bash ] && source /opt/ros/hydro/setup.bash
-
-  # Patch source code
-  msg "Patching source code"
-  cd ${srcdir}/${_dir}
-  git apply ${srcdir}/cmake.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build

@@ -3,12 +3,26 @@ pkgdesc="ROS - The PR2 head action is a node that provides an action interface f
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-pr2-head-action'
-pkgver='1.10.7'
+pkgver='1.10.8'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'ros-build-tools')
+
+ros_makedepends=(ros-hydro-kdl-parser
+  ros-hydro-message-filters
+  ros-hydro-tf-conversions
+  ros-hydro-trajectory-msgs
+  ros-hydro-sensor-msgs
+  ros-hydro-pr2-controllers-msgs
+  ros-hydro-orocos-kdl
+  ros-hydro-roscpp
+  ros-hydro-geometry-msgs
+  ros-hydro-catkin
+  ros-hydro-actionlib
+  ros-hydro-tf)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-hydro-kdl-parser
   ros-hydro-message-filters

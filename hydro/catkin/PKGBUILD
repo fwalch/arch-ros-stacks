@@ -3,7 +3,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/'
 
 pkgname='ros-hydro-catkin'
-pkgver='0.5.85'
+pkgver='0.5.86'
 _pkgver_patch=0
 arch=('i686' 'x86_64')
 pkgrel=1
@@ -47,7 +47,7 @@ build() {
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=OFF \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/hydro \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
