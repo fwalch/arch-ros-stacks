@@ -53,7 +53,7 @@ while [[ $1 ]]; do
 done
 [[ $dir ]] || usage
 
-makepkgopts+=("--asdeps" "--noconfirm")
+makepkgopts+=("--asdeps" "--noconfirm" "--asroot")
 # [[ $force ]] && makepkgopts+=("--force") || makepkgopts+=("--needed")
 [[ $force ]] || makepkgopts+=("--needed")
 
